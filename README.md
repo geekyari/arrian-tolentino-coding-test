@@ -121,14 +121,19 @@ Install dependencies
   composer install or composer update
 ```
 
-Create a database on mysql and name it with the ff:
+Create a database on mysql and update the DB_DATABASE key on .env with the following:
 
 ```bash
   arrian-tolentino-coding-test
 
 ```
 
-Make sure to check your .env to check if the datase setup is correct.
+Run migrations
+
+```bash
+  php artisan migrate:fresh --seed
+```
+
 
 ## API Reference
 
