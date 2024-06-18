@@ -9,6 +9,7 @@ use App\Http\Resources\V1\ProductResource;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Requests\V1\StoreProductRequest;
 use App\Http\Requests\V1\UpdateProductRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -76,5 +77,7 @@ class ProductController extends Controller
     {
         Cache::forget('product_' . $product->id);
         $product->delete();
+        return response()->json(['message' => 'Product deleted successfully'], Response::HTTP_OK);
     }
+
 }
