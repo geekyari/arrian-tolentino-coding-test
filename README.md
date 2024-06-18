@@ -105,4 +105,124 @@ Others:
 Q: The management requested a new feature where in the fictional e-commerce app must have a "featured products" section.
 How would you go about implementing this feature in the backend?
 
-A: _Put your answer here_
+A: I would add an 'is_featured" field to the products table, allowing administrators to mark or unmark products as featured. An API endpoint will also be created to handle CRUD operations with this new functionality. 
+
+## Run Locally
+
+Clone the Repository
+
+```bash
+  git clone https://github.com/geekyari/arrian-tolentino-coding-test.git
+```
+
+Install dependencies
+
+```bash
+  composer install or composer update
+```
+
+Create a database on mysql and name it with the ff:
+
+```bash
+  arrian-tolentino-coding-test
+
+```
+
+Make sure to check your .env to check if the datase setup is correct.
+
+## API Reference
+
+####  NOTE: Ensure requests are sent with Content-Type: application/json header to receive detailed validation error messages.
+
+#### GET all products
+
+```http
+  GET /api/v1/products
+```
+
+#### GET a product
+
+```http
+  GET /api/v1/products/{id}
+```
+
+| Parameter | Type      | Description                       |
+| :-------- | :-------- | :-------------------------------- |
+| `id`      | `integer` | **Required**. Id of item to fetch |
+
+#### CREATE a product
+
+```http
+  POST /api/v1/products
+```
+
+#### Request Body
+
+```post
+  {
+      "productName": "Product Samples",
+      "description": "Lorem Ipsum Dolor",
+      "price": "13.00"
+  }
+```
+
+| Parameter     | Type     | Description                        |
+| :------------ | :------- | :--------------------------------- |
+| `productName` | `string` | **Required**. Name of the product  |
+| `description` | `string` | **Required**. Desc of the product  |
+| `price`       | `float`  | **Required**. Price of the product |
+
+
+#### UPDATE a product
+
+```http
+  PUT /api/v1/products/{id}
+```
+
+#### Request Body
+
+```put
+  {
+      "productName": "Product Sample",
+      "description": "Lorem Ipsum Dolor",
+      "price": "13.00"
+  }
+```
+
+| Parameter     | Type     | Description                        |
+| :------------ | :------- | :--------------------------------- |
+| `id`          | `integer`| **Required**. Id of item to update |
+| `productName` | `string` | **Required**. Name of the product  |
+| `description` | `string` | **Required**. Desc of the product  |
+| `price`       | `float`  | **Required**. Price of the product |
+
+#### UPDATE a specific field of a product
+
+```http
+  PATCH /api/v1/products/{id}
+```
+
+#### Request Body
+
+```patch
+  {
+      "productName": "Product Sample"
+  }
+```
+
+| Parameter     | Type     | Description                        |
+| :------------ | :------- | :--------------------------------- |
+| `id`          | `integer`| **Required**. Id of item to update |
+| `productName` | `string` | **Optional**. Name of the product  |
+| `description` | `string` | **Optional**. Desc of the product  |
+| `price`       | `float`  | **Optional**. Price of the product |
+
+#### DELETE a product
+
+```http
+  DELETE /api/v1/products/${id}
+```
+
+| Parameter     | Type     | Description                        |
+| :------------ | :------- | :--------------------------------- |
+| `id`          | `integer`| **Required**. Id of item to delete |
